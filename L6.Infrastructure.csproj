@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{955FD94A-BBC1-4469-889A-740FB98338DE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>L6.Infrastructure</RootNamespace>
+    <AssemblyName>L6.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Current|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Current\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Atomic, Version=1.1.2.0, Culture=neutral, PublicKeyToken=979700c3ff7272ae, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\disruptor-fork.1.1.2\lib\net40\Atomic.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.3.1.1\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Disruptor, Version=1.1.2.0, Culture=neutral, PublicKeyToken=979700c3ff7272ae, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\disruptor-fork.1.1.2\lib\net40\Disruptor.dll</HintPath>
+    </Reference>
+    <Reference Include="Disruptor.Scheduler">
+      <HintPath>..\packages\disruptor-fork.1.1.2\lib\net40\Disruptor.Scheduler.dll</HintPath>
+    </Reference>
+    <Reference Include="Omu.ValueInjecter">
+      <HintPath>..\packages\valueinjecter.2.3.3\lib\net35\Omu.ValueInjecter.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\ActionCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Commands\ActionCommandHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\CommandHandler.cs" />
+    <Compile Include="Commands\EventCommand.cs" />
+    <Compile Include="Commands\ICommandSender.cs" />
+    <Compile Include="Data\Disposable.cs" />
+    <Compile Include="Data\IRepository.cs" />
+    <Compile Include="Data\IUnitOfWork.cs" />
+    <Compile Include="Data\PagedResult.cs" />
+    <Compile Include="Commands\PublisherWithDomain.cs" />
+    <Compile Include="Disruptor\EventDispatcher.cs" />
+    <Compile Include="Disruptor\EventDisruptorRouter.cs" />
+    <Compile Include="Disruptor\DomainCommandDispatcher.cs" />
+    <Compile Include="Disruptor\CommandDisruptorRouter.cs" />
+    <Compile Include="Disruptor\EventHolder.cs" />
+    <Compile Include="Disruptor\DomainMultiCommandDispatcher.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\2PhaseCommandHandler.cs" />
+    <Compile Include="Domain\CacheRepository.cs" />
+    <Compile Include="Domain\EventProcessor.cs" />
+    <Compile Include="Domain\IRequiresData.cs" />
+    <Compile Include="Domain\EventSourcedAR.cs" />
+    <Compile Include="Domain\EventSourced.cs" />
+    <Compile Include="Domain\IAggregateRoot.cs" />
+    <Compile Include="Domain\IDomainEventSerializer.cs" />
+    <Compile Include="Domain\Saga\SagaStarted.cs" />
+    <Compile Include="Domain\Saga\PersistedSaga.cs" />
+    <Compile Include="Domain\Saga\Saga.cs" />
+    <Compile Include="Domain\Saga\SagaCompleted.cs" />
+    <Compile Include="Domain\Saga\SagaLauncher.cs" />
+    <Compile Include="EventSourcing\AggregateNotFoundException.cs" />
+    <Compile Include="EventSourcing\Disruptor\StoreCommandEventHandler.cs" />
+    <Compile Include="EventSourcing\Disruptor\DisruptorCacheRepository.cs" />
+    <Compile Include="EventSourcing\Disruptor\DisruptorRepository.cs" />
+    <Compile Include="EventSourcing\Disruptor\EventStoreCommandHandler.cs" />
+    <Compile Include="EventSourcing\Disruptor\StoreCommands.cs" />
+    <Compile Include="Events\ActionHandler.cs" />
+    <Compile Include="Events\DomainEventRegistrationRemover.cs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Events\EventHandlerT.cs" />
+    <Compile Include="Events\IEventSource.cs" />
+    <Compile Include="Events\IHandles.cs" />
+    <Compile Include="Events\InternalBus.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Events\IStartedByMessage.cs" />
+    <Compile Include="Events\TimeoutMessage.cs" />
+    <Compile Include="OldCommand\IValidationHandler.cs" />
+    <Compile Include="OldCommand\CommandHandlerNotFoundException.cs" />
+    <Compile Include="OldCommand\ValidationHandlerNotFoundException.cs" />
+    <Compile Include="OldCommand\Dispatcher\AsyncCommandBus.cs" />
+    <Compile Include="OldCommand\Dispatcher\DefaultCommandBus.cs" />
+    <Compile Include="OldCommand\ICommand.cs" />
+    <Compile Include="OldCommand\ICommandHandler.cs" />
+    <Compile Include="OldCommand\Dispatcher\ICommandBus.cs" />
+    <Compile Include="Domain\AggregateRootCollection.cs" />
+    <Compile Include="Disruptor\CommandEventHandler.cs" />
+    <Compile Include="Disruptor\CommandHolder.cs" />
+    <Compile Include="Events\Event.cs" />
+    <Compile Include="Events\IEventPublisher.cs" />
+    <Compile Include="EventSourcing\IEventStore.cs" />
+    <Compile Include="Domain\PersistedAggregateRootCollection.cs" />
+    <Compile Include="Commands\ICommandHandler.cs" />
+    <Compile Include="Domain\IRepository.cs" />
+    <Compile Include="Commands\DomainCommandRouter.cs" />
+    <Compile Include="Commands\DomainCommand.cs" />
+    <Compile Include="Commands\IDomainCommandRouter.cs" />
+    <Compile Include="Events\IEventBus.cs" />
+    <Compile Include="Events\RXMessageBus.cs" />
+    <Compile Include="Util\ActionPublisher.cs" />
+    <Compile Include="Util\CloneInjection.cs" />
+    <Compile Include="Util\CollectionMin.cs" />
+    <Compile Include="Util\ConvertGuid.cs" />
+    <Compile Include="Util\Mask128.cs" />
+    <Compile Include="Util\DelegateAdjuster.cs" />
+    <Compile Include="Util\EventArgs.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\Ensure.cs" />
+    <Compile Include="Util\EnumExtentions.cs" />
+    <Compile Include="Util\NumberHelper.cs" />
+    <Compile Include="Util\PriorityQueue.cs" />
+    <Compile Include="Util\RandomHelper.cs" />
+    <Compile Include="Util\RandomNumberGenerator.cs" />
+    <Compile Include="Util\string.cs" />
+    <Compile Include="Util\StrongId.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Domain\NewFolder1\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
